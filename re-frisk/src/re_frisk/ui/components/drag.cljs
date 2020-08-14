@@ -16,4 +16,5 @@
   (swap! draggable assoc :offset (- (.-clientX evt) (.-left (.getBoundingClientRect (.-target evt)))))
   (goog-events/listen js/window EventType.MOUSEMOVE mouse-move-handler))
 
-(goog-events/listen js/window EventType.MOUSEUP mouse-up-handler)
+(when js/window
+  (goog-events/listen js/window EventType.MOUSEUP mouse-up-handler))

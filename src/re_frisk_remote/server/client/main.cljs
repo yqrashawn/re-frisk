@@ -71,16 +71,17 @@
 
 ;ENTRY POINT
 (defn ^:export main [& [port]]
-  (let [{:keys [chsk ch-recv state]}
-        (sente/make-channel-socket-client!
-         "/chsk"
-         nil
-         {:type   :auto
-          :host   (str "localhost:" (or port js/location.port))
-          :packer (sente-transit/get-transit-packer)
-          :params {:kind :re-frisk-client}})]
-    (sente/start-client-chsk-router! ch-recv event-msg-handler)
-    (mount)))
+  (when (some? js/goog.global.document)?
+    (let [{:keys [chsk ch-recv state]}
+         (sente/make-channel-socket-client!
+          "/chsk"
+          nil
+          {:type   :auto
+           :host   (str "localhost:" (or port js/location.port))
+           :packer (sente-transit/get-transit-packer)
+           :params {:kind :re-frisk-client}})]
+     (sente/start-client-chsk-router! ch-recv event-msg-handler)
+     (mount))))
 
 (defn on-js-reload []
   (mount))

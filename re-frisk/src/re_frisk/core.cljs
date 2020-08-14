@@ -94,4 +94,5 @@
     (js/setTimeout ui/mount-internal 100 re-frame-data)))
 
 (defn enable [& [opts]]
-  (enable-re-frisk! opts))
+  (when (some? js/goog.global.document)
+    (enable-re-frisk! opts)))

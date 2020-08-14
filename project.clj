@@ -1,6 +1,6 @@
-(defproject re-frisk-remote "1.3.4"
+(defproject re-frisk-remote-worker "1.3.4-SNAPSHOT"
   :description "Take full control of re-frame app"
-  :url "https://github.com/flexsurfer/re-frisk"
+  :url "https://github.com/yqrashawn/re-frisk"
   :license {:name "MIT"
             :url  "https://opensource.org/licenses/MIT"}
   :source-paths ["src" "dev" "re-frisk/src"]
